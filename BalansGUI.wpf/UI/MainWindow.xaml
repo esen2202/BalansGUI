@@ -1,0 +1,61 @@
+﻿<Window x:Class="BalansGUI.wpf.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BalansGUI.wpf.UI"
+        xmlns:uc="clr-namespace:BalansGUI.wpf.UI.UC"
+        xmlns:gauge="clr-namespace:Gauges.Polar;assembly=Gauges.Polar"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="740.824" Width="800">
+    <Grid>
+        <uc:CommSettings Margin="10,497,270,0" Height="203" VerticalAlignment="Top" />
+        <gauge:GaugePolar x:Name="GaugePolar1" HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="334" 
+                          Angle="{Binding Value,ElementName=sliderAngle}"
+                          Radius="{Binding Value,ElementName=sliderRadius}"
+                          RadarAngle="{Binding Value,ElementName=sliderRadarAngle}"
+                          Division="7" BorderColor="#FFEA0000" DivisionStrokeColor="#FFD6D6D6" YAxisLineColor="#FF3DDE3D" ActiveRegionRadius="81.0" ActiveRegionColor="#7C049304" XAxisLineColor="#FF3DDE3D" RenderTransformOrigin="0.911,0.508" Margin="10,8,0,0" RadarLineColor="#FF51FF00" Label="" >
+            <gauge:GaugePolar.IndicatorColor>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFFFFCB3"/>
+                    <GradientStop Color="#FF930000" Offset="1"/>
+                </RadialGradientBrush>
+            </gauge:GaugePolar.IndicatorColor>
+            <gauge:GaugePolar.BackgroundColor>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFACACAC" Offset="1"/>
+                    <GradientStop Color="#FFE2E2E2"/>
+                </RadialGradientBrush>
+            </gauge:GaugePolar.BackgroundColor>
+        </gauge:GaugePolar>
+
+        <Slider x:Name="sliderAngle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,348,0,0" Maximum="360" Width="389" 
+                Value="360"/>
+        <Slider x:Name="sliderRadius" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,389,0,0" Maximum="100" Width="389" 
+                Value="10"/>
+        <Slider x:Name="sliderRadarAngle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,437,0,0" Maximum="360" Width="389" 
+                Value="0"/>
+
+        <Label Content="Indicator Angle" HorizontalAlignment="Left" Margin="30,340,0,0" VerticalAlignment="Top"/>
+        <Label Content="Indicator Radius" HorizontalAlignment="Left" Margin="30,381,0,0" VerticalAlignment="Top"/>
+        <Label Content="Radar Radius" HorizontalAlignment="Left" Margin="30,429,0,0" VerticalAlignment="Top"/>
+        <gauge:GaugePolar x:Name="GaugePolar1_Copy" HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="334" 
+            Angle="{Binding Value, ElementName=sliderAngle}"
+            Radius="{Binding Value, ElementName=sliderRadius}"
+            RadarAngle="{Binding Value, ElementName=sliderRadarAngle}"
+            Division="11" BorderColor="#FF856B6B" DivisionStrokeColor="#FFD6D6D6" YAxisLineColor="#FF009900" ActiveRegionRadius="81.0" ActiveRegionColor="#7C049304" XAxisLineColor="#FF00A000" RenderTransformOrigin="0.911,0.508" Margin="410,10,0,0" RadarLineColor="White" Label="" IndicatorDiameter="6" >
+            <gauge:GaugePolar.IndicatorColor>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF0073FF"/>
+                    <GradientStop Color="#FF00117A" Offset="1"/>
+                </RadialGradientBrush>
+            </gauge:GaugePolar.IndicatorColor>
+            <gauge:GaugePolar.BackgroundColor>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFACACAC" Offset="1"/>
+                    <GradientStop Color="#FFE2E2E2"/>
+                </RadialGradientBrush>
+            </gauge:GaugePolar.BackgroundColor>
+        </gauge:GaugePolar>
+    </Grid>
+</Window>

@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="BalansGUI.wpf.UI.UC.CommSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BalansGUI.wpf.UI.UC"
+             mc:Ignorable="d" 
+             d:DesignHeight="219" d:DesignWidth="729">
+    <Border Background="#FFEAEAEA">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="91*"/>
+                <ColumnDefinition Width="300*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="137*"/>
+                    <ColumnDefinition Width="422*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Port Name" Grid.Column="0" Grid.Row="1" FontSize="16"/>
+                <Label Content="BaudRate" Grid.Column="0" Grid.Row="2" FontSize="16"/>
+                <Label Content="Data Bits" Grid.Column="0" Grid.Row="3" FontSize="16"/>
+                <Label Content="Parity" Grid.Column="0" Grid.Row="4" FontSize="16"/>
+                <Label Content="Stop Bits" Grid.Column="0" Grid.Row="5" FontSize="16"/>
+
+                <TextBox x:Name="tbPortName" Grid.Column="1" Grid.Row="1" MaxLength="10" FontSize="16" />
+                <TextBox x:Name="tbBaudRate" Grid.Column="1" Grid.Row="2" FontSize="16" />
+                <TextBox x:Name="tbDataBits" Grid.Column="1" Grid.Row="3" FontSize="16" />
+                <TextBox x:Name="tbParity" Grid.Column="1" Grid.Row="4" FontSize="16" />
+                <TextBox x:Name="tbStopBits" Grid.Column="1" Grid.Row="5" FontSize="16" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>
