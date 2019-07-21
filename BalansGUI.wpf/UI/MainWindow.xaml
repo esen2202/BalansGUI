@@ -7,6 +7,7 @@
         xmlns:uc="clr-namespace:BalansGUI.wpf.UI.UC"
         xmlns:gauge="clr-namespace:Gauges.Polar;assembly=Gauges.Polar"
         mc:Ignorable="d"
+        x:Name="_this"
         Title="MainWindow" Height="740.824" Width="800">
     <Grid>
         <uc:CommSettings Margin="10,497,270,0" Height="203" VerticalAlignment="Top" />

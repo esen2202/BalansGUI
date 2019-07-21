@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO.Ports;
+﻿using System.IO.Ports;
 
 
 namespace BalansGUI.core.Communication.Serial
 {
-    public class SerialComm
+    public class SerialComm : ISerialService
     {
         public SerialCommObject SerialObject { get; set; }
 
@@ -16,16 +11,16 @@ namespace BalansGUI.core.Communication.Serial
 
         public bool IsConnected = false;
 
-        public SerialComm(string PortName,int BaudRate, int DataBits, byte Parity, byte StopBits)
+        public SerialComm(SerialCommObject serialParameters)
         {
-            SerialObject.PortName = PortName;
-            SerialObject.BaudRate = BaudRate;
-            SerialObject.DataBits = DataBits;
-            SerialObject.Parity = Parity;
-            SerialObject.StopBits = StopBits;
+            SerialObject.PortName = serialParameters.PortName;
+            SerialObject.BaudRate = serialParameters.BaudRate;
+            SerialObject.DataBits = serialParameters.DataBits;
+            SerialObject.Parity = serialParameters.Parity;
+            SerialObject.StopBits = serialParameters.StopBits;
+            SerialPort.Encoding = serialParameters.Encoding;
 
             SerialPort = new SerialPort();
-
         }
 
         public bool GetConnectionStatus() => SerialPort.IsOpen;
@@ -37,14 +32,25 @@ namespace BalansGUI.core.Communication.Serial
             SerialPort.DataBits = SerialObject.DataBits;
             SerialPort.Parity = (Parity)SerialObject.Parity;
         }
-              public void Connect()
+
+        public void Connect()
         {
             AssignSerialPortParameters();
 
-            if (!SerialPort.IsOpen)
+            if (!GetConnectionStatus())
             {
                 SerialPort.Open();
             }
+            else
+            {
+                SerialPort.Close();
+                Connect();
+            }
+        }
+
+        public void DisConnect()
+        {
+            if (GetConnectionStatus()) SerialPort.Close(); 
         }
 
     }
@@ -61,6 +67,9 @@ namespace BalansGUI.core.Communication.Serial
 
         public byte StopBits { get; set; }
 
+        public byte HandShake { get; set; }
+
+        public System.Text.Encoding Encoding { get; set; }
     }
 
 }
